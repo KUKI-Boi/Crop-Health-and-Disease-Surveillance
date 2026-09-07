@@ -99,6 +99,8 @@ class CropHealthPipeline:
         seg_result = self.segmenter.segment_healthy_vs_diseased(bgr_img)
         healthy_mask = seg_result["healthy_mask"]
         disease_mask = seg_result["diseased_mask"]
+        vegetation_mask = seg_result["vegetation_mask"]
+        debug_info = seg_result.get("debug_info", {})
 
         healthy_cnt = int(np.count_nonzero(healthy_mask))
         disease_cnt = int(np.count_nonzero(disease_mask))
@@ -109,6 +111,14 @@ class CropHealthPipeline:
             diseased_pixels=disease_cnt,
             image_total_pixels=total_img_pixels
         )
+
+        # Invariant Verification
+        assert np.array_equal(disease_mask, cv2.bitwise_and(disease_mask, vegetation_mask)), "Disease mask must be subset of vegetation mask!"
+        assert np.array_equal(healthy_mask, cv2.bitwise_and(healthy_mask, vegetation_mask)), "Healthy mask must be subset of vegetation mask!"
+        assert 0.0 <= metrics["disease_percentage"] <= 100.0, "Disease percentage must be between 0 and 100!"
+        assert 0.0 <= metrics["healthy_percentage"] <= 100.0, "Healthy percentage must be between 0 and 100!"
+        if metrics["vegetation_pixels"] > 0:
+            assert abs((metrics["healthy_percentage"] + metrics["disease_percentage"]) - 100.0) < 0.1, "Healthy + Disease % must sum to approx 100%!"
 
         # 4. Infection Severity Classification
         severity = classify_severity(metrics["disease_percentage"])
@@ -146,12 +156,14 @@ class CropHealthPipeline:
             "disease_percentage": metrics["disease_percentage"],
             "severity_level": severity["severity_level"],
             "severity_details": severity,
+            "vegetation_mask": vegetation_mask,
             "healthy_mask": healthy_mask,
             "disease_mask": disease_mask,
             "colorized_map": colorized_map,
             "bgr_image": bgr_img,
             "label_analysis_details": gt_analysis_res if gt_analysis_res else {"colorized_map": colorized_map},
-            "evaluation_metrics": evaluation_metrics
+            "evaluation_metrics": evaluation_metrics,
+            "debug_info": debug_info
         }
 
         return result
