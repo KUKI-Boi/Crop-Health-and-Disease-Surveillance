@@ -28,394 +28,391 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom AgroDrone UI Styling - Precision Agriculture Theme
-import base64
-from pathlib import Path
-
-def get_hero_bg_style():
-    hero_path = Path("results/hero_bg.png")
-    if hero_path.exists():
-        encoded = base64.b64encode(hero_path.read_bytes()).decode("utf-8")
-        return f"background: linear-gradient(135deg, rgba(7, 50, 39, 0.88) 0%, rgba(11, 77, 60, 0.85) 100%), url('data:image/png;base64,{encoded}') center/cover no-repeat !important;"
-    return "background: linear-gradient(135deg, #073227 0%, #0B4D3C 100%) !important;"
-
-st.markdown(f"""
+# Custom UI Styling - FarmV Modern Farm Management Theme
+st.markdown("""
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 
     <style>
-    /* Global AgroDrone Page Styling */
-    .stApp {{
-        background-color: #F3F6EC !important;
+    /* Global Page Styling - FarmV AgTech Mint Canvas */
+    .stApp {
+        background-color: #F0FDF4 !important;
         font-family: 'Plus Jakarta Sans', sans-serif;
-        color: #11221D !important;
-    }}
+        color: #0F172A !important;
+    }
     
-    /* Main area typography readability */
-    .stApp p, .stApp span, .stApp label, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {{
-        color: #073227 !important;
-    }}
+    /* Main area text readability */
+    .stApp p, .stApp span, .stApp label, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
+        color: #0F172A !important;
+    }
 
-    /* Streamlit Top Header Bar */
-    header[data-testid="stHeader"] {{
-        background-color: #F3F6EC !important;
-        border-bottom: 2.5px solid #0B4D3C !important;
-    }}
-    header[data-testid="stHeader"] * {{
-        color: #0B4D3C !important;
-        fill: #0B4D3C !important;
-    }}
+    /* Streamlit Top Header Bar & Navbar Controls Visibility */
+    header[data-testid="stHeader"] {
+        background-color: #F0FDF4 !important;
+        border-bottom: 2.5px solid #047857 !important;
+    }
+    header[data-testid="stHeader"] * {
+        color: #0F172A !important;
+        fill: #0F172A !important;
+    }
     header[data-testid="stHeader"] button,
     header[data-testid="stHeader"] a,
     header[data-testid="stHeader"] span,
     header[data-testid="stHeader"] div,
-    header[data-testid="stHeader"] svg {{
-        color: #0B4D3C !important;
-        fill: #0B4D3C !important;
+    header[data-testid="stHeader"] svg {
+        color: #0F172A !important;
+        fill: #0F172A !important;
         font-weight: 700 !important;
-    }}
-    div[data-testid="stDecoration"] {{
+    }
+    div[data-testid="stDecoration"] {
         background-image: none !important;
-        background-color: #FFB703 !important;
+        background-color: #10B981 !important;
         height: 4px !important;
-    }}
+    }
 
-    /* AgroDrone Hero Container */
-    .hero-container {{
-        {get_hero_bg_style()}
-        border: 2.5px solid #073227;
-        border-radius: 24px;
-        padding: 42px 48px;
-        margin-bottom: 28px;
-        box-shadow: 0 12px 36px rgba(7, 50, 39, 0.25);
-        color: #FFFFFF !important;
+    /* FarmV Brand Navigation Pill Bar */
+    .farmv-nav-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #022C22;
+        color: #FFFFFF;
+        padding: 10px 24px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        border: 2px solid #047857;
+        box-shadow: 0 4px 12px rgba(4, 120, 87, 0.15);
+    }
+    .farmv-logo-text {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #34D399;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .farmv-pilot-pill {
+        background-color: #065F46;
+        color: #D1FAE5;
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        border: 1px solid #10B981;
+    }
+
+    /* FarmV Hero Banner */
+    .hero-container {
+        background: linear-gradient(135deg, #022C22 0%, #064E3B 50%, #047857 100%);
+        border: 2.5px solid #047857;
+        border-radius: 18px;
+        padding: 28px 36px;
+        margin-bottom: 22px;
+        box-shadow: 0 12px 30px -5px rgba(2, 44, 34, 0.25);
+        color: #FFFFFF;
         position: relative;
         overflow: hidden;
-    }}
-    .hero-brand-tag {{
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.18);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        color: #E8EFE0 !important;
-        padding: 4px 16px;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-        backdrop-filter: blur(8px);
-    }}
-    .hero-title {{
+    }
+    .hero-title {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 2.7rem;
+        font-size: 2.3rem;
         font-weight: 800;
         color: #FFFFFF !important;
         margin: 0;
-        line-height: 1.12;
-        letter-spacing: -0.8px;
-    }}
-    .hero-subtitle {{
-        font-size: 1.15rem;
-        font-weight: 500;
-        color: #E8EFE0 !important;
-        margin-top: 10px;
-        margin-bottom: 22px;
-        max-width: 820px;
-        line-height: 1.5;
-    }}
-    .hero-badges-row {{
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-    }}
-    .hero-pill {{
-        background: #FFB703;
-        color: #073227 !important;
-        font-weight: 800;
-        padding: 6px 18px;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #A7F3D0 !important;
+        margin-top: 8px;
+        margin-bottom: 14px;
+    }
+    .hero-handwritten {
+        font-size: 0.9rem;
+        color: #065F46 !important;
+        font-weight: 700;
+        display: inline-block;
+        background: #34D399;
+        padding: 4px 16px;
         border-radius: 999px;
-        font-size: 0.88rem;
-        border: 1.5px solid #073227;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }}
-    .hero-pill-secondary {{
-        background: rgba(255, 255, 255, 0.92);
-        color: #0B4D3C !important;
-        font-weight: 800;
-        padding: 6px 18px;
-        border-radius: 999px;
-        font-size: 0.88rem;
-        border: 1.5px solid #0B4D3C;
-    }}
+        border: 1.5px solid #065F46;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
     
-    /* Academic Banner */
-    .academic-banner {{
-        background-color: #E8EFE0;
-        border: 2px solid #0B4D3C;
-        padding: 16px 24px;
-        border-radius: 16px;
+    /* Academic / Methodology Banner */
+    .academic-banner {
+        background-color: #FFFFFF;
+        border: 2px solid #10B981;
+        border-left: 6px solid #059669;
+        padding: 14px 20px;
+        border-radius: 12px;
         font-size: 0.95rem;
-        color: #073227 !important;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 15px rgba(11, 77, 60, 0.08);
-    }}
-    .academic-banner strong {{
-        color: #0B4D3C !important;
-    }}
+        color: #065F46 !important;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+    }
+    .academic-banner strong {
+        color: #047857 !important;
+    }
     
     /* Section Headers */
-    .section-header {{
+    .section-header {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.4rem;
+        font-size: 1.35rem;
         font-weight: 800;
-        color: #073227 !important;
-        border-bottom: 3px solid #0B4D3C;
+        color: #047857 !important;
+        border-bottom: 3px solid #10B981;
         padding-bottom: 8px;
-        margin-top: 32px;
-        margin-bottom: 20px;
-    }}
+        margin-top: 28px;
+        margin-bottom: 18px;
+    }
     
-    /* Metric Cards */
-    .metric-card {{
+    /* FarmV Precision Metric Cards */
+    .metric-card {
         background-color: #FFFFFF;
-        border: 2.5px solid #0B4D3C;
-        border-radius: 18px;
-        padding: 20px 14px;
+        border: 2px solid #A7F3D0;
+        border-top: 4px solid #10B981;
+        border-radius: 14px;
+        padding: 18px 12px;
         text-align: center;
-        box-shadow: 0 6px 18px rgba(11, 77, 60, 0.08);
+        box-shadow: 0 6px 18px rgba(4, 120, 87, 0.06);
         transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }}
-    .metric-card:hover {{
+    }
+    .metric-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(11, 77, 60, 0.15);
-    }}
-    .metric-val {{
+        box-shadow: 0 10px 25px rgba(4, 120, 87, 0.12);
+        border-color: #10B981;
+    }
+    .metric-val {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         font-weight: 800;
-        color: #073227 !important;
+        color: #065F46 !important;
         line-height: 1.2;
         word-break: break-word;
-    }}
-    .metric-label {{
+    }
+    .metric-label {
         font-size: 0.8rem;
         font-weight: 700;
-        color: #4A6057 !important;
+        color: #047857 !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-top: 6px;
-    }}
+    }
     
-    /* Sidebar Styling */
-    section[data-testid="stSidebar"] {{
-        background-color: #E8EFE0 !important;
-        border-right: 2.5px solid #0B4D3C !important;
-    }}
-    section[data-testid="stSidebar"] * {{
-        color: #073227 !important;
-    }}
+    /* FarmV Sidebar Styling */
+    section[data-testid="stSidebar"] {
+        background-color: #FFFFFF !important;
+        border-right: 2.5px solid #A7F3D0 !important;
+    }
+    section[data-testid="stSidebar"] * {
+        color: #0F172A !important;
+    }
     section[data-testid="stSidebar"] label, 
     section[data-testid="stSidebar"] p, 
     section[data-testid="stSidebar"] span, 
     section[data-testid="stSidebar"] div,
     section[data-testid="stSidebar"] h1,
     section[data-testid="stSidebar"] h2,
-    section[data-testid="stSidebar"] h3 {{
-        color: #073227 !important;
+    section[data-testid="stSidebar"] h3 {
+        color: #0F172A !important;
         font-weight: 700 !important;
-    }}
+    }
     
-    /* Sidebar Inputs & Selectbox Contrast Fix */
-    section[data-testid="stSidebar"] input {{
-        background-color: #FFFFFF !important;
-        color: #073227 !important;
-        border: 2.5px solid #0B4D3C !important;
+    /* Sidebar Input Text Fields */
+    section[data-testid="stSidebar"] input {
+        background-color: #F0FDF4 !important;
+        color: #0F172A !important;
+        border: 2px solid #059669 !important;
         border-radius: 8px !important;
         font-weight: 600 !important;
-    }}
+    }
     
-    /* COMPLETE STREAMLIT CLOUD & LOCAL SELECTBOX DROPDOWN ARROW FIX */
+    /* COMPLETE FARMV SELECTBOX DROPDOWN ARROW FIX */
     div[data-testid="stSelectbox"],
-    div[data-baseweb="select"] {{
+    div[data-baseweb="select"] {
         background-color: #FFFFFF !important;
         border-radius: 10px !important;
-    }}
+    }
     
     div[data-testid="stSelectbox"] > div,
     div[data-baseweb="select"] > div,
-    div[data-baseweb="select"] div[role="combobox"] {{
+    div[data-baseweb="select"] div[role="combobox"] {
         background-color: #FFFFFF !important;
-        color: #073227 !important;
-        border: 2.5px solid #0B4D3C !important;
+        color: #0F172A !important;
+        border: 2px solid #059669 !important;
         border-radius: 10px !important;
-        box-shadow: 2px 2px 0px #0B4D3C !important;
+        box-shadow: 0 3px 8px rgba(5, 150, 105, 0.08) !important;
         overflow: hidden !important;
-    }}
+    }
 
     div[data-testid="stSelectbox"] *,
-    div[data-baseweb="select"] * {{
-        color: #073227 !important;
-    }}
+    div[data-baseweb="select"] * {
+        color: #0F172A !important;
+    }
 
-    /* Target the right dropdown arrow button area */
+    /* Target the right dropdown arrow button area with FarmV Emerald */
     div[data-testid="stSelectbox"] [data-baseweb="icon"],
     div[data-baseweb="select"] [data-baseweb="icon"],
     div[data-baseweb="select"] > div > div:last-child,
-    div[data-baseweb="select"] div[aria-hidden="true"] {{
-        background-color: #FFB703 !important;
-        border-left: 2.5px solid #0B4D3C !important;
+    div[data-baseweb="select"] div[aria-hidden="true"] {
+        background-color: #10B981 !important;
+        border-left: 2px solid #059669 !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
         min-width: 36px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-    }}
+    }
     div[data-testid="stSelectbox"] [data-baseweb="icon"] *,
-    div[data-baseweb="select"] [data-baseweb="icon"] * {{
-        background-color: #FFB703 !important;
-        color: #073227 !important;
-        fill: #073227 !important;
-    }}
+    div[data-baseweb="select"] [data-baseweb="icon"] * {
+        background-color: #10B981 !important;
+        color: #FFFFFF !important;
+        fill: #FFFFFF !important;
+    }
 
-    /* Force the SVG Arrow Icon to be 100% visible dark navy */
+    /* Force the SVG Arrow Icon to be 100% visible white on emerald */
     div[data-testid="stSelectbox"] svg,
     div[data-baseweb="select"] svg,
-    svg[data-testid="stSelectboxIcon"] {{
-        fill: #073227 !important;
-        color: #073227 !important;
-        stroke: #073227 !important;
+    svg[data-testid="stSelectboxIcon"] {
+        fill: #FFFFFF !important;
+        color: #FFFFFF !important;
+        stroke: #FFFFFF !important;
         width: 1.3rem !important;
         height: 1.3rem !important;
         opacity: 1 !important;
         visibility: visible !important;
         display: block !important;
-    }}
+    }
 
     div[data-testid="stSelectbox"] path,
     div[data-baseweb="select"] path,
-    svg[data-testid="stSelectboxIcon"] path {{
-        fill: #073227 !important;
-        stroke: #073227 !important;
+    svg[data-testid="stSelectboxIcon"] path {
+        fill: #FFFFFF !important;
+        stroke: #FFFFFF !important;
         opacity: 1 !important;
-    }}
+    }
 
-    /* Dropdown Popover Menu */
+    /* Dropdown Popover Menu (when expanded) */
     div[data-baseweb="popover"],
-    div[data-baseweb="popover"] * {{
+    div[data-baseweb="popover"] * {
         background-color: #FFFFFF !important;
-        color: #073227 !important;
-    }}
+        color: #0F172A !important;
+    }
     div[data-baseweb="popover"] ul[data-baseweb="menu"],
-    ul[role="listbox"] {{
-        border: 2.5px solid #0B4D3C !important;
+    ul[role="listbox"] {
+        border: 2px solid #059669 !important;
         border-radius: 10px !important;
-        box-shadow: 0 6px 20px rgba(11, 77, 60, 0.15) !important;
+        box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12) !important;
         background-color: #FFFFFF !important;
-    }}
+    }
     div[data-baseweb="popover"] li,
-    ul[role="listbox"] li {{
-        color: #073227 !important;
+    ul[role="listbox"] li {
+        color: #0F172A !important;
         font-weight: 600 !important;
-    }}
+    }
     div[data-baseweb="popover"] li:hover,
-    ul[role="listbox"] li:hover {{
-        background-color: #FFB703 !important;
-        color: #073227 !important;
-    }}
+    ul[role="listbox"] li:hover {
+        background-color: #D1FAE5 !important;
+        color: #065F46 !important;
+    }
 
-    /* Radio Button Styling */
-    div[aria-label="Select Analysis Mode"] label p {{
-        color: #073227 !important;
+    /* Radio Buttons */
+    div[aria-label="Select Analysis Mode"] label p {
+        color: #0F172A !important;
         font-weight: 700 !important;
         font-size: 0.95rem !important;
-    }}
+    }
 
-    /* Alerts Contrast */
-    div[data-testid="stAlert"] {{
-        border: 2.5px solid #0B4D3C !important;
-        border-radius: 14px !important;
-        box-shadow: 0 4px 15px rgba(11, 77, 60, 0.08) !important;
-    }}
-    div[data-testid="stAlert"] * {{
-        color: #073227 !important;
+    /* Alerts (Success / Info / Warning / Error) Styling */
+    div[data-testid="stAlert"] {
+        border: 2px solid #10B981 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08) !important;
+    }
+    div[data-testid="stAlert"] * {
+        color: #065F46 !important;
         font-weight: 700 !important;
-    }}
+    }
     
-    /* Button Customization (Primary Emerald Button) */
-    .stButton > button {{
-        background-color: #0B4D3C !important;
+    /* FarmV Action Buttons (Modern Emerald Gradient Pill) */
+    .stButton > button {
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
         color: #FFFFFF !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-weight: 800 !important;
         font-size: 1rem !important;
-        border: 2px solid #073227 !important;
+        border: none !important;
         border-radius: 999px !important;
-        padding: 12px 28px !important;
-        box-shadow: 0 4px 14px rgba(11, 77, 60, 0.25) !important;
+        padding: 10px 24px !important;
+        box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.38) !important;
         transition: all 0.2s ease !important;
         width: 100%;
-    }}
-    .stButton > button:hover {{
+    }
+    .stButton > button:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 6px 18px rgba(7, 50, 39, 0.35) !important;
-        background-color: #073227 !important;
-    }}
+        box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.48) !important;
+        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    }
     
-    /* Download Button Customization */
-    .stDownloadButton > button {{
-        background-color: #E8EFE0 !important;
-        color: #073227 !important;
-        font-family: 'Plus Jakarta Sans', sans-serif !important;
-        font-weight: 800 !important;
-        border: 2.5px solid #0B4D3C !important;
-        border-radius: 999px !important;
-        box-shadow: 0 4px 12px rgba(11, 77, 60, 0.12) !important;
-        width: 100%;
-    }}
-    .stDownloadButton > button:hover {{
-        background-color: #FFB703 !important;
-        color: #073227 !important;
-        transform: translateY(-2px) !important;
-    }}
-
-    /* Native Streamlit Metric Cards Styling */
-    div[data-testid="stMetric"] {{
+    /* Download Buttons */
+    .stDownloadButton > button {
         background-color: #FFFFFF !important;
-        border: 2.5px solid #0B4D3C !important;
-        border-radius: 16px !important;
-        padding: 16px 18px !important;
-        box-shadow: 0 4px 15px rgba(11, 77, 60, 0.08) !important;
-    }}
-    div[data-testid="stMetric"] * {{
-        color: #073227 !important;
-    }}
-    div[data-testid="stMetricLabel"] p {{
+        color: #047857 !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 700 !important;
+        border: 2px solid #10B981 !important;
+        border-radius: 999px !important;
+        box-shadow: 0 3px 10px rgba(16, 185, 129, 0.12) !important;
+        width: 100%;
+    }
+    .stDownloadButton > button:hover {
+        background-color: #D1FAE5 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(16, 185, 129, 0.22) !important;
+    }
+
+    /* Native Streamlit Metric Cards */
+    div[data-testid="stMetric"] {
+        background-color: #FFFFFF !important;
+        border: 2px solid #A7F3D0 !important;
+        border-top: 4px solid #10B981 !important;
+        border-radius: 14px !important;
+        padding: 14px 16px !important;
+        box-shadow: 0 4px 12px rgba(4, 120, 87, 0.05) !important;
+    }
+    div[data-testid="stMetric"] * {
+        color: #065F46 !important;
+    }
+    div[data-testid="stMetricLabel"] p {
         font-weight: 700 !important;
         font-size: 0.85rem !important;
-        color: #4A6057 !important;
-    }}
-    div[data-testid="stMetricValue"] {{
+        color: #047857 !important;
+    }
+    div[data-testid="stMetricValue"] {
         font-weight: 800 !important;
         font-size: 1.8rem !important;
-        color: #0B4D3C !important;
-    }}
+        color: #065F46 !important;
+    }
 
-    /* Expander Box Styling */
-    div[data-testid="stExpander"] {{
-        border: 2.5px solid #0B4D3C !important;
-        border-radius: 16px !important;
-        background-color: #E8EFE0 !important;
-        box-shadow: 0 4px 15px rgba(11, 77, 60, 0.08) !important;
+    /* Expander Styling */
+    div[data-testid="stExpander"] {
+        border: 2px solid #10B981 !important;
+        border-radius: 14px !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.06) !important;
         overflow: hidden !important;
-    }}
-    div[data-testid="stExpander"] summary {{
+    }
+    div[data-testid="stExpander"] summary {
         font-weight: 800 !important;
-        color: #073227 !important;
-        background-color: #E8EFE0 !important;
-    }}
+        color: #065F46 !important;
+        background-color: #F0FDF4 !important;
+    }
 
     /* Sidebar File Uploader Styling */
     div[data-testid="stFileUploader"],
@@ -423,128 +420,84 @@ st.markdown(f"""
     div[data-testid="stFileUploaderDropzone"],
     div[data-testid="stFileUploaderFileData"],
     div[data-testid="stFileUploaderFile"],
-    section[data-testid="stFileUploaderFileData"] {{
+    section[data-testid="stFileUploaderFileData"] {
         background-color: #FFFFFF !important;
-        border-color: #0B4D3C !important;
-        color: #073227 !important;
-    }}
+        border-color: #10B981 !important;
+        color: #0F172A !important;
+    }
 
-    div[data-testid="stFileUploaderDropzone"] {{
-        border: 2px dashed #0B4D3C !important;
-        border-radius: 14px !important;
-        background-color: #FFFFFF !important;
-        padding: 12px !important;
-    }}
+    div[data-testid="stFileUploaderDropzone"] {
+        border: 2px dashed #10B981 !important;
+        border-radius: 12px !important;
+        background-color: #F0FDF4 !important;
+        padding: 10px !important;
+    }
 
     div[data-testid="stFileUploaderFileData"],
-    section[data-testid="stFileUploaderFileData"] {{
-        background-color: #E8EFE0 !important;
-        border: 2px solid #0B4D3C !important;
-        border-radius: 12px !important;
-        box-shadow: 0 3px 10px rgba(11, 77, 60, 0.08) !important;
-        padding: 8px 14px !important;
-    }}
+    section[data-testid="stFileUploaderFileData"] {
+        background-color: #FFFFFF !important;
+        border: 2px solid #10B981 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 3px 8px rgba(16, 185, 129, 0.12) !important;
+        padding: 8px 12px !important;
+    }
 
     div[data-testid="stFileUploader"] *,
     div[data-testid="stFileUploaderFileData"] *,
     div[data-testid="stFileUploaderFileName"],
-    div[data-testid="stFileUploaderDropzoneInstructions"] * {{
-        color: #073227 !important;
+    div[data-testid="stFileUploaderDropzoneInstructions"] * {
+        color: #0F172A !important;
         font-weight: 700 !important;
-        fill: #073227 !important;
-    }}
+        fill: #0F172A !important;
+    }
 
     div[data-testid="stFileUploaderFileData"] small,
-    div[data-testid="stFileUploaderFileData"] span {{
-        color: #4A6057 !important;
+    div[data-testid="stFileUploaderFileData"] span {
+        color: #047857 !important;
         font-weight: 600 !important;
-    }}
+    }
 
     div[data-testid="stFileUploaderFileData"] button,
     button[aria-label="Remove file"],
-    button[aria-label="Delete file"] {{
-        background-color: #FFFFFF !important;
-        border: 1.5px solid #0B4D3C !important;
+    button[aria-label="Delete file"] {
+        background-color: #F0FDF4 !important;
+        border: 1.5px solid #10B981 !important;
         border-radius: 50% !important;
-    }}
+    }
+    div[data-testid="stFileUploaderFileData"] button svg,
+    div[data-testid="stFileUploaderFileData"] button path {
+        fill: #047857 !important;
+        stroke: #047857 !important;
+        color: #047857 !important;
+    }
 
     /* Table & Dataframe styling */
-    .stDataFrame, div[data-testid="stTable"] {{
-        border: 2.5px solid #0B4D3C !important;
-        border-radius: 14px !important;
+    .stDataFrame, div[data-testid="stTable"] {
+        border: 2px solid #10B981 !important;
+        border-radius: 12px !important;
         overflow: hidden !important;
-        box-shadow: 0 4px 15px rgba(11, 77, 60, 0.08) !important;
-    }}
+        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08) !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# Application Header (AgroDrone Precision Agriculture Theme)
+# FarmV Brand Navigation & Status Bar
+st.markdown("""
+<div class="farmv-nav-bar">
+    <div class="farmv-logo-text">🌱 FarmV</div>
+    <div class="farmv-pilot-pill">Active Pilot: India & Sri Lanka | Precision AgTech Platform</div>
+</div>
+""", unsafe_allow_html=True)
+
+# Application Header (FarmV Inspired Modern AgTech Banner)
 st.markdown("""
 <div class="hero-container">
-    <div class="hero-brand-tag">🛸 AgroDrone Solutions | Field Intelligence</div>
-    <h1 class="hero-title">Precision Drone Solutions for Smarter Agriculture</h1>
-    <div class="hero-subtitle">Image Processing & Computer Vision Based Crop Disease Segmentation, Infection Ratio Quantification, and Severity Estimation</div>
-    <div class="hero-badges-row">
-        <span class="hero-pill">⚡ Real-Time Drone Analytics</span>
-        <span class="hero-pill-secondary">🌱 Non-Deep-Learning CV</span>
-        <span class="hero-pill-secondary">📊 Academic Submission Ready</span>
-    </div>
+    <h1 class="hero-title">🌿 FarmV — Crop Health and Disease Surveillance</h1>
+    <div class="hero-subtitle">Modern Farm Management Powered by Technology • Image Processing & Disease Severity Estimation</div>
+    <div class="hero-handwritten">⚡ Precision Soil & Aerial Crop Monitoring</div>
 </div>
-
-<!-- AgroDrone 4-Grid Feature Section -->
-<div style="margin-bottom: 32px;">
-    <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #0B4D3C; margin-bottom: 4px;">WHY CHOOSE AGRODRONE</div>
-    <div style="font-size: 1.8rem; font-weight: 800; color: #073227; margin-bottom: 20px;">Data-Driven Farming Starts from the Sky</div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-        <div style="background: #E8EFE0; border: 2px solid #0B4D3C; border-radius: 18px; padding: 22px 18px; box-shadow: 0 4px 15px rgba(11,77,60,0.06);">
-            <div style="font-size: 1.8rem; margin-bottom: 8px;">🚁</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #073227; margin-bottom: 6px;">Crop Health Monitoring</div>
-            <div style="font-size: 0.88rem; color: #4A6057; line-height: 1.45;">Deterministic HSV & ExG vegetation index segmentation for foliage health.</div>
-        </div>
-        <div style="background: #E8EFE0; border: 2px solid #0B4D3C; border-radius: 18px; padding: 22px 18px; box-shadow: 0 4px 15px rgba(11,77,60,0.06);">
-            <div style="font-size: 1.8rem; margin-bottom: 8px;">🔬</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #073227; margin-bottom: 6px;">Dynamic Label Inspector</div>
-            <div style="font-size: 0.88rem; color: #4A6057; line-height: 1.45;">Evaluates ground-truth mask intensity distributions dynamically without hardcoding.</div>
-        </div>
-        <div style="background: #E8EFE0; border: 2px solid #0B4D3C; border-radius: 18px; padding: 22px 18px; box-shadow: 0 4px 15px rgba(11,77,60,0.06);">
-            <div style="font-size: 1.8rem; margin-bottom: 8px;">📊</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #073227; margin-bottom: 6px;">Exact Infection Area %</div>
-            <div style="font-size: 0.88rem; color: #4A6057; line-height: 1.45;">Excludes background pixels to compute exact disease-to-vegetation ratio.</div>
-        </div>
-        <div style="background: #E8EFE0; border: 2px solid #0B4D3C; border-radius: 18px; padding: 22px 18px; box-shadow: 0 4px 15px rgba(11,77,60,0.06);">
-            <div style="font-size: 1.8rem; margin-bottom: 8px;">📄</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #073227; margin-bottom: 6px;">Academic Report Engine</div>
-            <div style="font-size: 0.88rem; color: #4A6057; line-height: 1.45;">Auto-compiles 14-section submission reports & batch analysis CSV files.</div>
-        </div>
-    </div>
-</div>
-
-<!-- AgroDrone Elevate Your Farm's Performance Metrics Section -->
-<div style="margin-bottom: 32px;">
-    <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #0B4D3C; margin-bottom: 4px;">PERFORMANCE IMPACT</div>
-    <div style="font-size: 1.8rem; font-weight: 800; color: #073227; margin-bottom: 20px;">Elevate Your Farm's Performance.</div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-        <div style="background-color: #0B4D3C; border: 2.5px solid #073227; border-radius: 18px; padding: 24px 16px; text-align: center; color: #FFFFFF; box-shadow: 0 8px 24px rgba(11,77,60,0.25);">
-            <div style="font-size: 2.4rem; font-weight: 900; color: #FFB703;">+25%</div>
-            <div style="font-size: 0.85rem; font-weight: 700; color: #E8EFE0; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 6px;">Yield Potential</div>
-        </div>
-        <div style="background-color: #E8EFE0; border: 2.5px solid #0B4D3C; border-radius: 18px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 15px rgba(11,77,60,0.08);">
-            <div style="font-size: 2.4rem; font-weight: 900; color: #0B4D3C;">-30%</div>
-            <div style="font-size: 0.85rem; font-weight: 700; color: #4A6057; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 6px;">Targeted Chemical Use</div>
-        </div>
-        <div style="background-color: #E8EFE0; border: 2.5px solid #0B4D3C; border-radius: 18px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 15px rgba(11,77,60,0.08);">
-            <div style="font-size: 2.4rem; font-weight: 900; color: #0B4D3C;">48h</div>
-            <div style="font-size: 0.85rem; font-weight: 700; color: #4A6057; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 6px;">Faster Disease Detection</div>
-        </div>
-        <div style="background-color: #E8EFE0; border: 2.5px solid #0B4D3C; border-radius: 18px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 15px rgba(11,77,60,0.08);">
-            <div style="font-size: 2.4rem; font-weight: 900; color: #0B4D3C;">240+</div>
-            <div style="font-size: 0.85rem; font-weight: 700; color: #4A6057; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 6px;">Validated Field Samples</div>
-        </div>
-    </div>
-</div>
-
 <div class="academic-banner">
-    <strong>🎓 Academic Prototype Note:</strong> This application demonstrates a deterministic, classical image processing pipeline (ground-truth label class extraction and exact pixel area ratio calculations). Designed for integration with agricultural drone surveillance imagery.
+    <strong>🌱 FarmV AgTech Note:</strong> Bringing precision technology to farms — soil health monitoring, AI-guided crop surveillance, and sustainable organic farming practices. Deterministic pixel ratio calculations for aerial drone and field surveillance.
 </div>
 """, unsafe_allow_html=True)
 
@@ -874,13 +827,3 @@ else: # Single Sample or Custom Upload Mode
                 file_name=f"metrics_{sample_name}.csv",
                 mime="text/csv"
             )
-
-# AgroDrone Footer Banner
-st.markdown("""
-<div style="background-color: #073227; border: 2px solid #0B4D3C; border-radius: 20px; padding: 36px 40px; margin-top: 48px; color: #FFFFFF; text-align: center; box-shadow: 0 12px 36px rgba(7, 50, 39, 0.3);">
-    <div style="font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #FFB703; margin-bottom: 6px;">AGRODRONE PRECISION SURVEILLANCE</div>
-    <div style="font-size: 2.2rem; font-weight: 900; letter-spacing: -0.5px; color: #FFFFFF; margin-bottom: 8px;">AgroDrone</div>
-    <div style="font-size: 0.95rem; color: #E8EFE0; max-width: 650px; margin: 0 auto 20px auto; line-height: 1.5;">Empowering modern agriculture with drone-based foliage surveillance, exact infection quantification, and automated academic report generation.</div>
-    <div style="font-size: 0.8rem; color: #A3B8B0;">© 2026 AgroDrone Crop Health Surveillance Project. All rights reserved.</div>
-</div>
-""", unsafe_allow_html=True)
