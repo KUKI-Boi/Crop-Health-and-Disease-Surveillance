@@ -463,7 +463,7 @@ st.sidebar.header("⚙️ Configuration & Inputs")
 
 mode = st.sidebar.radio(
     "Select Analysis Mode",
-    ["Select Dataset Sample", "Upload Custom Image", "Batch Analysis"]
+    ["Select Dataset Sample", "Upload Custom Image & Label", "Batch Analysis"]
 )
 
 if mode == "Batch Analysis":
@@ -592,7 +592,7 @@ else: # Single Sample or Custom Upload Mode
         dataset_path = st.sidebar.text_input("Dataset Folder Path", value="Dataset")
         loader = DatasetLoader(dataset_path)
         discovered_samples = loader.discover_samples()
-        valid_samples = [s for s in discovered_samples if s.is_valid and s.image_path]
+        valid_samples = [s for s in discovered_samples if s.is_valid and s.label_path]
 
         sample_options = {f"{s.disease_category} / {s.sample_id}": s for s in valid_samples}
 
@@ -606,18 +606,27 @@ else: # Single Sample or Custom Upload Mode
             if selected_pair.label_path:
                 label_image = cv2.imread(selected_pair.label_path, cv2.IMREAD_UNCHANGED)
         else:
-            st.sidebar.warning("No valid samples found in Dataset folder.")
+            st.sidebar.warning("No valid sample pairs found in Dataset folder.")
 
-    else: # Upload Custom Mode (Original Image Only)
+    else: # Upload Custom Mode
         uploaded_img_file = st.sidebar.file_uploader(
             "Upload Crop Leaf Image (.jpg, .png)",
             type=["jpg", "jpeg", "png"]
+        )
+        uploaded_lbl_file = st.sidebar.file_uploader(
+            "Upload Matching Label Mask (*_label.png)",
+            type=["png", "jpg"]
         )
 
         if uploaded_img_file is not None:
             sample_name = uploaded_img_file.name.split('.')[0]
             img_bytes = uploaded_img_file.read()
             bgr_image = load_and_preprocess_image(img_bytes)
+
+        if uploaded_lbl_file is not None:
+            lbl_bytes = uploaded_lbl_file.read()
+            nparr_lbl = np.frombuffer(lbl_bytes, np.uint8)
+            label_image = cv2.imdecode(nparr_lbl, cv2.IMREAD_UNCHANGED)
 
     # Analyze Button
     analyze_clicked = st.sidebar.button("🔬 Analyze Image")
@@ -643,10 +652,19 @@ else: # Single Sample or Custom Upload Mode
             st.write(f"**Total Frame Pixels**: {w * h:,} pixels")
 
     else:
-        st.info("👈 Select a sample from the Dataset or upload an original crop leaf image in the sidebar to begin.")
+        st.info("👈 Select a sample from the Dataset or upload an image in the sidebar to begin.")
 
-    # Execute Genuine Computer Vision Inference on Original Image
-    if bgr_image is not None:
+    # Check label availability
+    if bgr_image is not None and label_image is None:
+        st.warning("""
+        ⚠️ **Missing Ground-Truth Label Mask (`*_label.png`)**
+        
+        This prototype system requires a matching ground-truth segmentation label file (`*_label.png`) to compute exact quantitative vegetation area percentages without fabrication.
+        
+        *Please upload the corresponding `*_label.png` file in the sidebar or select a complete sample pair in Dataset mode.*
+        """)
+
+    elif bgr_image is not None and label_image is not None:
         pipeline = CropHealthPipeline()
         analysis = pipeline.analyze_sample(
             image_input=bgr_image,
@@ -665,17 +683,15 @@ else: # Single Sample or Custom Upload Mode
             st.image(cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB), use_container_width=True)
         
         with col_seg:
-            st.markdown("**Predicted Healthy Region Mask**")
-            st.image(analysis["healthy_mask"], use_container_width=True)
+            st.markdown("**Ground-Truth Label**")
+            if "colorized_map" in analysis["label_analysis_details"]:
+                st.image(analysis["label_analysis_details"]["colorized_map"], use_container_width=True)
+            else:
+                st.image(label_image, use_container_width=True)
                 
         with col_map:
-            st.markdown("**Predicted Disease Map (Healthy Green / Disease Red)**")
+            st.markdown("**Disease Map (Healthy Green / Disease Red)**")
             st.image(analysis["colorized_map"], use_container_width=True)
-
-        # Evaluation metrics box (when ground-truth label exists in dataset)
-        if analysis.get("evaluation_metrics"):
-            eval_m = analysis["evaluation_metrics"]
-            st.success(f"🎯 **Ground-Truth Validation Metrics**: IoU = `{eval_m['iou']}` | Dice Score = `{eval_m['dice']}` | Precision = `{eval_m['precision']}` | Recall = `{eval_m['recall']}`")
 
         # SECTION 3: CROP HEALTH METRICS
         st.markdown('<div class="section-header">Section 3: Crop Health Metrics</div>', unsafe_allow_html=True)

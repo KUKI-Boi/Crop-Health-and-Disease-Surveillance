@@ -1,17 +1,15 @@
 """
 Comprehensive Unit Tests for Full Image-Processing Analysis Pipeline.
 Verifies percentage math, zero-vegetation protection, severity thresholds,
-label class extraction, classical CV inference, and structured result dict output.
+label class extraction, and structured result dict output.
 """
 
 import unittest
 import numpy as np
-import cv2
 
 from src.analysis.metrics import calculate_health_metrics
 from src.analysis.severity import classify_severity
 from src.image_processing.label_analysis import LabelAnalyzer
-from src.image_processing.segmentation import VegetationSegmenter
 from src.analysis.pipeline import CropHealthPipeline
 
 class TestAnalysisPipeline(unittest.TestCase):
@@ -72,19 +70,22 @@ class TestAnalysisPipeline(unittest.TestCase):
         analyzer = LabelAnalyzer()
         res = analyzer.analyze_label(label_img)
 
+        # 127 healthy value replaced by 255 at [20:30, 20:30]
+        # Healthy mask count = 1600 - 100 = 1500
         self.assertEqual(np.count_nonzero(res["healthy_mask"]), 1500)
         self.assertEqual(np.count_nonzero(res["disease_mask"]), 100)
 
     def test_full_pipeline_structured_result(self):
-        """Verify full pipeline performs inference on original image and returns structured result dictionary."""
-        # Synthetic leaf image (green leaf with yellow rust spot)
-        bgr_img = np.zeros((100, 100, 3), dtype=np.uint8)
-        bgr_img[20:80, 20:80] = (34, 197, 94) # Green leaf (3600 pixels)
-        bgr_img[40:50, 40:50] = (0, 215, 255) # Yellow disease spot (100 pixels)
+        """Verify full pipeline returns structured result dictionary with all required keys."""
+        dummy_img = np.full((100, 100, 3), 128, dtype=np.uint8)
+        dummy_label = np.zeros((100, 100), dtype=np.uint8)
+        dummy_label[20:80, 20:80] = 127 # 3600 healthy
+        dummy_label[40:50, 40:50] = 255 # 100 disease
 
         pipeline = CropHealthPipeline()
         result = pipeline.analyze_sample(
-            image_input=bgr_img,
+            image_input=dummy_img,
+            label_input=dummy_label,
             crop_category="wheat_stripe_rust",
             image_name="test_wheat_sample"
         )
@@ -92,7 +93,7 @@ class TestAnalysisPipeline(unittest.TestCase):
         required_keys = [
             "crop_category", "image_name", "total_image_pixels", "vegetation_pixels",
             "healthy_pixels", "disease_pixels", "healthy_percentage", "disease_percentage",
-            "severity_level", "healthy_mask", "disease_mask", "colorized_map"
+            "severity_level"
         ]
 
         for k in required_keys:
@@ -101,9 +102,11 @@ class TestAnalysisPipeline(unittest.TestCase):
         self.assertEqual(result["crop_category"], "wheat_stripe_rust")
         self.assertEqual(result["image_name"], "test_wheat_sample")
         self.assertEqual(result["total_image_pixels"], 10000)
-        self.assertAlmostEqual(result["vegetation_pixels"], 3600, delta=20)
-        self.assertGreater(result["healthy_pixels"], 0)
-        self.assertGreaterEqual(result["disease_pixels"], 0)
+        self.assertEqual(result["vegetation_pixels"], 3600)
+        self.assertEqual(result["healthy_pixels"], 3500)
+        self.assertEqual(result["disease_pixels"], 100)
+        self.assertAlmostEqual(result["disease_percentage"], 2.78, places=2)
+        self.assertEqual(result["severity_level"], "Low")
 
 if __name__ == "__main__":
     unittest.main()

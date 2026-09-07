@@ -4,6 +4,14 @@ An academic Image Processing & Computer Vision project designed to detect plant 
 
 Designed as an algorithmic prototype for integration with **drone-based aerial crop monitoring**.
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://crophealthanddiseasesurveillance.streamlit.app/)
+
+---
+
+## 🌐 Live Web Application
+Access the deployed interactive web application at:
+👉 **[https://crophealthanddiseasesurveillance.streamlit.app/](https://crophealthanddiseasesurveillance.streamlit.app/)**
+
 ---
 
 ## 📌 Problem Statement
