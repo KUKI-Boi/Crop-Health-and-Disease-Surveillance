@@ -28,29 +28,29 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom UI Styling - FarmV Modern Farm Management Theme
+# Custom Academic UI Styling - Aardvark Book Club Inspired Theme
 st.markdown("""
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 
     <style>
-    /* Global Page Styling - FarmV AgTech Mint Canvas */
+    /* Global Page Styling */
     .stApp {
-        background-color: #F0FDF4 !important;
+        background-color: #FAF6F0 !important;
         font-family: 'Plus Jakarta Sans', sans-serif;
         color: #0F172A !important;
     }
     
-    /* Main area text readability */
+    /* Ensure main area text readability */
     .stApp p, .stApp span, .stApp label, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
         color: #0F172A !important;
     }
 
-    /* Streamlit Top Header Bar & Navbar Controls Visibility */
+    /* Streamlit Top Header Bar & Controls Visibility Fix */
     header[data-testid="stHeader"] {
-        background-color: #F0FDF4 !important;
-        border-bottom: 2.5px solid #047857 !important;
+        background-color: #FAF6F0 !important;
+        border-bottom: 2.5px solid #0F172A !important;
     }
     header[data-testid="stHeader"] * {
         color: #0F172A !important;
@@ -67,51 +67,18 @@ st.markdown("""
     }
     div[data-testid="stDecoration"] {
         background-image: none !important;
-        background-color: #10B981 !important;
+        background-color: #FFB703 !important;
         height: 4px !important;
     }
 
-    /* FarmV Brand Navigation Pill Bar */
-    .farmv-nav-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #022C22;
-        color: #FFFFFF;
-        padding: 10px 24px;
-        border-radius: 12px;
-        margin-bottom: 16px;
-        border: 2px solid #047857;
-        box-shadow: 0 4px 12px rgba(4, 120, 87, 0.15);
-    }
-    .farmv-logo-text {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.25rem;
-        font-weight: 800;
-        color: #34D399;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .farmv-pilot-pill {
-        background-color: #065F46;
-        color: #D1FAE5;
-        padding: 4px 14px;
-        border-radius: 999px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        border: 1px solid #10B981;
-    }
-
-    /* FarmV Hero Banner */
+    /* Header Hero Banner (Aardvark Yellow Hero style) */
     .hero-container {
-        background: linear-gradient(135deg, #022C22 0%, #064E3B 50%, #047857 100%);
-        border: 2.5px solid #047857;
-        border-radius: 18px;
+        background: linear-gradient(135deg, #FFB703 0%, #F9A220 100%);
+        border: 3px solid #0F172A;
+        border-radius: 20px;
         padding: 28px 36px;
-        margin-bottom: 22px;
-        box-shadow: 0 12px 30px -5px rgba(2, 44, 34, 0.25);
-        color: #FFFFFF;
+        margin-bottom: 24px;
+        box-shadow: 6px 6px 0px #0F172A;
         position: relative;
         overflow: hidden;
     }
@@ -119,44 +86,45 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 2.3rem;
         font-weight: 800;
-        color: #FFFFFF !important;
+        color: #0F172A !important;
         margin: 0;
         line-height: 1.15;
         letter-spacing: -0.5px;
     }
     .hero-subtitle {
         font-size: 1.1rem;
-        font-weight: 600;
-        color: #A7F3D0 !important;
+        font-weight: 700;
+        color: #1E293B !important;
         margin-top: 8px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
     }
     .hero-handwritten {
-        font-size: 0.9rem;
-        color: #065F46 !important;
+        font-family: 'Caveat', cursive;
+        font-size: 1.4rem;
+        color: #3D3195 !important;
         font-weight: 700;
+        transform: rotate(-1.5deg);
         display: inline-block;
-        background: #34D399;
-        padding: 4px 16px;
+        background: #FFFDF7;
+        padding: 2px 14px;
         border-radius: 999px;
-        border: 1.5px solid #065F46;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        border: 2px solid #0F172A;
+        box-shadow: 2px 2px 0px #0F172A;
     }
     
-    /* Academic / Methodology Banner */
+    /* Academic Banner */
     .academic-banner {
-        background-color: #FFFFFF;
-        border: 2px solid #10B981;
-        border-left: 6px solid #059669;
+        background-color: #FFFDF7;
+        border: 2.5px solid #0F172A;
         padding: 14px 20px;
-        border-radius: 12px;
+        border-radius: 14px;
         font-size: 0.95rem;
-        color: #065F46 !important;
-        margin-bottom: 24px;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+        color: #0F172A !important;
+        margin-bottom: 25px;
+        box-shadow: 4px 4px 0px #0F172A;
     }
     .academic-banner strong {
-        color: #047857 !important;
+        color: #0F172A !important;
     }
     
     /* Section Headers */
@@ -164,50 +132,48 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 1.35rem;
         font-weight: 800;
-        color: #047857 !important;
-        border-bottom: 3px solid #10B981;
+        color: #0F172A !important;
+        border-bottom: 3px solid #0F172A;
         padding-bottom: 8px;
         margin-top: 28px;
         margin-bottom: 18px;
     }
     
-    /* FarmV Precision Metric Cards */
+    /* Metric Cards (Aardvark Card Style with Pop Shadow) */
     .metric-card {
         background-color: #FFFFFF;
-        border: 2px solid #A7F3D0;
-        border-top: 4px solid #10B981;
-        border-radius: 14px;
+        border: 2.5px solid #0F172A;
+        border-radius: 16px;
         padding: 18px 12px;
         text-align: center;
-        box-shadow: 0 6px 18px rgba(4, 120, 87, 0.06);
+        box-shadow: 4px 4px 0px #0F172A;
         transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
     .metric-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(4, 120, 87, 0.12);
-        border-color: #10B981;
+        box-shadow: 6px 6px 0px #0F172A;
     }
     .metric-val {
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 1.6rem;
         font-weight: 800;
-        color: #065F46 !important;
+        color: #0F172A !important;
         line-height: 1.2;
         word-break: break-word;
     }
     .metric-label {
         font-size: 0.8rem;
         font-weight: 700;
-        color: #047857 !important;
+        color: #475569 !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-top: 6px;
     }
     
-    /* FarmV Sidebar Styling */
+    /* SIDEBAR STYLING FIX - Force All Sidebar Text to Crisp Black/Navy */
     section[data-testid="stSidebar"] {
-        background-color: #FFFFFF !important;
-        border-right: 2.5px solid #A7F3D0 !important;
+        background-color: #FFFDF7 !important;
+        border-right: 3px solid #0F172A !important;
     }
     section[data-testid="stSidebar"] * {
         color: #0F172A !important;
@@ -223,16 +189,16 @@ st.markdown("""
         font-weight: 700 !important;
     }
     
-    /* Sidebar Input Text Fields */
+    /* Sidebar Inputs & Selectbox Contrast Fix */
     section[data-testid="stSidebar"] input {
-        background-color: #F0FDF4 !important;
+        background-color: #FFFFFF !important;
         color: #0F172A !important;
-        border: 2px solid #059669 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 8px !important;
         font-weight: 600 !important;
     }
     
-    /* COMPLETE FARMV SELECTBOX DROPDOWN ARROW FIX */
+    /* COMPLETE STREAMLIT CLOUD & LOCAL SELECTBOX DROPDOWN ARROW FIX */
     div[data-testid="stSelectbox"],
     div[data-baseweb="select"] {
         background-color: #FFFFFF !important;
@@ -244,9 +210,9 @@ st.markdown("""
     div[data-baseweb="select"] div[role="combobox"] {
         background-color: #FFFFFF !important;
         color: #0F172A !important;
-        border: 2px solid #059669 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 10px !important;
-        box-shadow: 0 3px 8px rgba(5, 150, 105, 0.08) !important;
+        box-shadow: 2px 2px 0px #0F172A !important;
         overflow: hidden !important;
     }
 
@@ -255,13 +221,13 @@ st.markdown("""
         color: #0F172A !important;
     }
 
-    /* Target the right dropdown arrow button area with FarmV Emerald */
+    /* Target the right dropdown arrow button area */
     div[data-testid="stSelectbox"] [data-baseweb="icon"],
     div[data-baseweb="select"] [data-baseweb="icon"],
     div[data-baseweb="select"] > div > div:last-child,
     div[data-baseweb="select"] div[aria-hidden="true"] {
-        background-color: #10B981 !important;
-        border-left: 2px solid #059669 !important;
+        background-color: #FFB703 !important;
+        border-left: 2.5px solid #0F172A !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
         min-width: 36px !important;
@@ -271,18 +237,18 @@ st.markdown("""
     }
     div[data-testid="stSelectbox"] [data-baseweb="icon"] *,
     div[data-baseweb="select"] [data-baseweb="icon"] * {
-        background-color: #10B981 !important;
-        color: #FFFFFF !important;
-        fill: #FFFFFF !important;
+        background-color: #FFB703 !important;
+        color: #0F172A !important;
+        fill: #0F172A !important;
     }
 
-    /* Force the SVG Arrow Icon to be 100% visible white on emerald */
+    /* Force the SVG Arrow Icon to be 100% visible dark navy */
     div[data-testid="stSelectbox"] svg,
     div[data-baseweb="select"] svg,
     svg[data-testid="stSelectboxIcon"] {
-        fill: #FFFFFF !important;
-        color: #FFFFFF !important;
-        stroke: #FFFFFF !important;
+        fill: #0F172A !important;
+        color: #0F172A !important;
+        stroke: #0F172A !important;
         width: 1.3rem !important;
         height: 1.3rem !important;
         opacity: 1 !important;
@@ -293,8 +259,8 @@ st.markdown("""
     div[data-testid="stSelectbox"] path,
     div[data-baseweb="select"] path,
     svg[data-testid="stSelectboxIcon"] path {
-        fill: #FFFFFF !important;
-        stroke: #FFFFFF !important;
+        fill: #0F172A !important;
+        stroke: #0F172A !important;
         opacity: 1 !important;
     }
 
@@ -306,9 +272,9 @@ st.markdown("""
     }
     div[data-baseweb="popover"] ul[data-baseweb="menu"],
     ul[role="listbox"] {
-        border: 2px solid #059669 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 10px !important;
-        box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12) !important;
+        box-shadow: 4px 4px 0px #0F172A !important;
         background-color: #FFFFFF !important;
     }
     div[data-baseweb="popover"] li,
@@ -318,103 +284,102 @@ st.markdown("""
     }
     div[data-baseweb="popover"] li:hover,
     ul[role="listbox"] li:hover {
-        background-color: #D1FAE5 !important;
-        color: #065F46 !important;
+        background-color: #FFB703 !important;
+        color: #0F172A !important;
     }
 
-    /* Radio Buttons */
+    /* Radio Button Fix */
     div[aria-label="Select Analysis Mode"] label p {
         color: #0F172A !important;
         font-weight: 700 !important;
         font-size: 0.95rem !important;
     }
 
-    /* Alerts (Success / Info / Warning / Error) Styling */
+    /* Alerts (Success / Info / Warning / Error) Contrast Fix */
     div[data-testid="stAlert"] {
-        border: 2px solid #10B981 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 12px !important;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08) !important;
+        box-shadow: 4px 4px 0px #0F172A !important;
     }
     div[data-testid="stAlert"] * {
-        color: #065F46 !important;
+        color: #0F172A !important;
         font-weight: 700 !important;
     }
     
-    /* FarmV Action Buttons (Modern Emerald Gradient Pill) */
+    /* Button Customization (Chunky Retro Button) */
     .stButton > button {
-        background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-        color: #FFFFFF !important;
+        background-color: #FFB703 !important;
+        color: #0F172A !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-weight: 800 !important;
         font-size: 1rem !important;
-        border: none !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 999px !important;
         padding: 10px 24px !important;
-        box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.38) !important;
-        transition: all 0.2s ease !important;
+        box-shadow: 3px 3px 0px #0F172A !important;
+        transition: all 0.15s ease !important;
         width: 100%;
     }
     .stButton > button:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.48) !important;
-        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+        box-shadow: 5px 5px 0px #0F172A !important;
+        background-color: #F9A220 !important;
     }
     
-    /* Download Buttons */
+    /* Download Button Customization */
     .stDownloadButton > button {
-        background-color: #FFFFFF !important;
-        color: #047857 !important;
+        background-color: #FFFDF7 !important;
+        color: #0F172A !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-weight: 700 !important;
-        border: 2px solid #10B981 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 999px !important;
-        box-shadow: 0 3px 10px rgba(16, 185, 129, 0.12) !important;
+        box-shadow: 3px 3px 0px #0F172A !important;
         width: 100%;
     }
     .stDownloadButton > button:hover {
-        background-color: #D1FAE5 !important;
+        background-color: #FFB703 !important;
         transform: translateY(-2px) !important;
-        box-shadow: 0 6px 16px rgba(16, 185, 129, 0.22) !important;
+        box-shadow: 5px 5px 0px #0F172A !important;
     }
 
-    /* Native Streamlit Metric Cards */
+    /* Native Streamlit Metric Cards Styling */
     div[data-testid="stMetric"] {
         background-color: #FFFFFF !important;
-        border: 2px solid #A7F3D0 !important;
-        border-top: 4px solid #10B981 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 14px !important;
         padding: 14px 16px !important;
-        box-shadow: 0 4px 12px rgba(4, 120, 87, 0.05) !important;
+        box-shadow: 4px 4px 0px #0F172A !important;
     }
     div[data-testid="stMetric"] * {
-        color: #065F46 !important;
+        color: #0F172A !important;
     }
     div[data-testid="stMetricLabel"] p {
         font-weight: 700 !important;
         font-size: 0.85rem !important;
-        color: #047857 !important;
+        color: #475569 !important;
     }
     div[data-testid="stMetricValue"] {
         font-weight: 800 !important;
         font-size: 1.8rem !important;
-        color: #065F46 !important;
+        color: #0F172A !important;
     }
 
-    /* Expander Styling */
+    /* Expander Box Styling */
     div[data-testid="stExpander"] {
-        border: 2px solid #10B981 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 14px !important;
-        background-color: #FFFFFF !important;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.06) !important;
+        background-color: #FFFDF7 !important;
+        box-shadow: 4px 4px 0px #0F172A !important;
         overflow: hidden !important;
     }
     div[data-testid="stExpander"] summary {
         font-weight: 800 !important;
-        color: #065F46 !important;
-        background-color: #F0FDF4 !important;
+        color: #0F172A !important;
+        background-color: #FFFDF7 !important;
     }
 
-    /* Sidebar File Uploader Styling */
+    /* Sidebar File Uploader & Uploaded File Card Styling */
     div[data-testid="stFileUploader"],
     div[data-testid="stFileUploader"] section,
     div[data-testid="stFileUploaderDropzone"],
@@ -422,23 +387,23 @@ st.markdown("""
     div[data-testid="stFileUploaderFile"],
     section[data-testid="stFileUploaderFileData"] {
         background-color: #FFFFFF !important;
-        border-color: #10B981 !important;
+        border-color: #0F172A !important;
         color: #0F172A !important;
     }
 
     div[data-testid="stFileUploaderDropzone"] {
-        border: 2px dashed #10B981 !important;
+        border: 2px dashed #0F172A !important;
         border-radius: 12px !important;
-        background-color: #F0FDF4 !important;
+        background-color: #FFFFFF !important;
         padding: 10px !important;
     }
 
     div[data-testid="stFileUploaderFileData"],
     section[data-testid="stFileUploaderFileData"] {
-        background-color: #FFFFFF !important;
-        border: 2px solid #10B981 !important;
+        background-color: #FFFDF7 !important;
+        border: 2px solid #0F172A !important;
         border-radius: 10px !important;
-        box-shadow: 0 3px 8px rgba(16, 185, 129, 0.12) !important;
+        box-shadow: 2px 2px 0px #0F172A !important;
         padding: 8px 12px !important;
     }
 
@@ -453,51 +418,43 @@ st.markdown("""
 
     div[data-testid="stFileUploaderFileData"] small,
     div[data-testid="stFileUploaderFileData"] span {
-        color: #047857 !important;
+        color: #475569 !important;
         font-weight: 600 !important;
     }
 
     div[data-testid="stFileUploaderFileData"] button,
     button[aria-label="Remove file"],
     button[aria-label="Delete file"] {
-        background-color: #F0FDF4 !important;
-        border: 1.5px solid #10B981 !important;
+        background-color: #FFFFFF !important;
+        border: 1.5px solid #0F172A !important;
         border-radius: 50% !important;
     }
     div[data-testid="stFileUploaderFileData"] button svg,
     div[data-testid="stFileUploaderFileData"] button path {
-        fill: #047857 !important;
-        stroke: #047857 !important;
-        color: #047857 !important;
+        fill: #0F172A !important;
+        stroke: #0F172A !important;
+        color: #0F172A !important;
     }
 
     /* Table & Dataframe styling */
     .stDataFrame, div[data-testid="stTable"] {
-        border: 2px solid #10B981 !important;
+        border: 2.5px solid #0F172A !important;
         border-radius: 12px !important;
         overflow: hidden !important;
-        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08) !important;
+        box-shadow: 4px 4px 0px #0F172A !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# FarmV Brand Navigation & Status Bar
-st.markdown("""
-<div class="farmv-nav-bar">
-    <div class="farmv-logo-text">🌱 FarmV</div>
-    <div class="farmv-pilot-pill">Active Pilot: India & Sri Lanka | Precision AgTech Platform</div>
-</div>
-""", unsafe_allow_html=True)
-
-# Application Header (FarmV Inspired Modern AgTech Banner)
+# Application Header (Aardvark Book Club Inspired Hero Banner)
 st.markdown("""
 <div class="hero-container">
-    <h1 class="hero-title">🌿 FarmV — Crop Health and Disease Surveillance</h1>
-    <div class="hero-subtitle">Modern Farm Management Powered by Technology • Image Processing & Disease Severity Estimation</div>
-    <div class="hero-handwritten">⚡ Precision Soil & Aerial Crop Monitoring</div>
+    <h1 class="hero-title">🌾 Crop Health and Disease Surveillance</h1>
+    <div class="hero-subtitle">Image Processing Based Crop Disease Segmentation & Severity Estimation</div>
+    <div class="hero-handwritten">⚡ Aerial & Drone Surveillance Ready</div>
 </div>
 <div class="academic-banner">
-    <strong>🌱 FarmV AgTech Note:</strong> Bringing precision technology to farms — soil health monitoring, AI-guided crop surveillance, and sustainable organic farming practices. Deterministic pixel ratio calculations for aerial drone and field surveillance.
+    <strong>🎓 Academic Prototype Note:</strong> This application demonstrates a deterministic, classical image processing pipeline (ground-truth label class extraction and exact pixel area ratio calculations). Designed for integration with agricultural drone surveillance imagery.
 </div>
 """, unsafe_allow_html=True)
 
