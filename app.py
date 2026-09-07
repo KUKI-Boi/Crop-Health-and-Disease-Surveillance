@@ -28,103 +28,101 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Academic UI Styling - Aardvark Book Club Inspired Theme
+# Custom Academic UI Styling - AgroDrone Agritech Inspired Theme
 st.markdown("""
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 
     <style>
     /* Global Page Styling */
     .stApp {
-        background-color: #FAF6F0 !important;
+        background-color: #F4F7F2 !important;
         font-family: 'Plus Jakarta Sans', sans-serif;
-        color: #0F172A !important;
+        color: #0A291E !important;
     }
     
     /* Ensure main area text readability */
     .stApp p, .stApp span, .stApp label, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
-        color: #0F172A !important;
+        color: #0A291E !important;
     }
 
     /* Streamlit Top Header Bar & Controls Visibility Fix */
     header[data-testid="stHeader"] {
-        background-color: #FAF6F0 !important;
-        border-bottom: 2.5px solid #0F172A !important;
+        background-color: #F4F7F2 !important;
+        border-bottom: 2px solid #0B4F3A !important;
     }
     header[data-testid="stHeader"] * {
-        color: #0F172A !important;
-        fill: #0F172A !important;
+        color: #0B4F3A !important;
+        fill: #0B4F3A !important;
     }
     header[data-testid="stHeader"] button,
     header[data-testid="stHeader"] a,
     header[data-testid="stHeader"] span,
     header[data-testid="stHeader"] div,
     header[data-testid="stHeader"] svg {
-        color: #0F172A !important;
-        fill: #0F172A !important;
+        color: #0B4F3A !important;
+        fill: #0B4F3A !important;
         font-weight: 700 !important;
     }
     div[data-testid="stDecoration"] {
         background-image: none !important;
-        background-color: #FFB703 !important;
+        background-color: #10B981 !important;
         height: 4px !important;
     }
 
-    /* Header Hero Banner (Aardvark Yellow Hero style) */
+    /* AgroDrone Header Hero Banner */
     .hero-container {
-        background: linear-gradient(135deg, #FFB703 0%, #F9A220 100%);
-        border: 3px solid #0F172A;
+        background: linear-gradient(135deg, #0B4F3A 0%, #063D2C 100%);
+        border: 1px solid #042D20;
         border-radius: 20px;
-        padding: 28px 36px;
+        padding: 32px 38px;
         margin-bottom: 24px;
-        box-shadow: 6px 6px 0px #0F172A;
+        box-shadow: 0 10px 30px rgba(11, 79, 58, 0.18);
         position: relative;
         overflow: hidden;
     }
     .hero-title {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 2.3rem;
+        font-size: 2.4rem;
         font-weight: 800;
-        color: #0F172A !important;
+        color: #FFFFFF !important;
         margin: 0;
         line-height: 1.15;
         letter-spacing: -0.5px;
     }
     .hero-subtitle {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #1E293B !important;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #E2EBDC !important;
         margin-top: 8px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
     .hero-handwritten {
-        font-family: 'Caveat', cursive;
-        font-size: 1.4rem;
-        color: #3D3195 !important;
+        font-size: 0.92rem;
+        color: #A7F3D0 !important;
         font-weight: 700;
-        transform: rotate(-1.5deg);
         display: inline-block;
-        background: #FFFDF7;
-        padding: 2px 14px;
+        background: rgba(16, 185, 129, 0.18);
+        padding: 4px 16px;
         border-radius: 999px;
-        border: 2px solid #0F172A;
-        box-shadow: 2px 2px 0px #0F172A;
+        border: 1.5px solid #10B981;
+        letter-spacing: 0.3px;
     }
     
     /* Academic Banner */
     .academic-banner {
-        background-color: #FFFDF7;
-        border: 2.5px solid #0F172A;
-        padding: 14px 20px;
-        border-radius: 14px;
+        background-color: #EBF0E6;
+        border-left: 5px solid #0B4F3A;
+        border-radius: 12px;
+        padding: 16px 22px;
         font-size: 0.95rem;
-        color: #0F172A !important;
-        margin-bottom: 25px;
-        box-shadow: 4px 4px 0px #0F172A;
+        color: #0A291E !important;
+        margin-bottom: 26px;
+        box-shadow: 0 4px 14px rgba(11, 79, 58, 0.05);
     }
     .academic-banner strong {
-        color: #0F172A !important;
+        color: #0B4F3A !important;
     }
     
     /* Section Headers */
@@ -132,51 +130,51 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 1.35rem;
         font-weight: 800;
-        color: #0F172A !important;
-        border-bottom: 3px solid #0F172A;
+        color: #0B4F3A !important;
+        border-bottom: 2px solid #0B4F3A;
         padding-bottom: 8px;
         margin-top: 28px;
         margin-bottom: 18px;
     }
     
-    /* Metric Cards (Aardvark Card Style with Pop Shadow) */
+    /* AgroDrone Metric Cards */
     .metric-card {
         background-color: #FFFFFF;
-        border: 2.5px solid #0F172A;
+        border: 1.5px solid #E1EADF;
         border-radius: 16px;
-        padding: 18px 12px;
+        padding: 20px 14px;
         text-align: center;
-        box-shadow: 4px 4px 0px #0F172A;
+        box-shadow: 0 4px 18px rgba(11, 79, 58, 0.06);
         transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
     .metric-card:hover {
         transform: translateY(-2px);
-        box-shadow: 6px 6px 0px #0F172A;
+        box-shadow: 0 8px 24px rgba(11, 79, 58, 0.12);
     }
     .metric-val {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.6rem;
+        font-size: 1.65rem;
         font-weight: 800;
-        color: #0F172A !important;
+        color: #0B4F3A !important;
         line-height: 1.2;
         word-break: break-word;
     }
     .metric-label {
         font-size: 0.8rem;
         font-weight: 700;
-        color: #475569 !important;
+        color: #4A6B5D !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-top: 6px;
     }
     
-    /* SIDEBAR STYLING FIX - Force All Sidebar Text to Crisp Black/Navy */
+    /* Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background-color: #FFFDF7 !important;
-        border-right: 3px solid #0F172A !important;
+        background-color: #FFFFFF !important;
+        border-right: 2px solid #E1EADF !important;
     }
     section[data-testid="stSidebar"] * {
-        color: #0F172A !important;
+        color: #0A291E !important;
     }
     section[data-testid="stSidebar"] label, 
     section[data-testid="stSidebar"] p, 
@@ -185,20 +183,20 @@ st.markdown("""
     section[data-testid="stSidebar"] h1,
     section[data-testid="stSidebar"] h2,
     section[data-testid="stSidebar"] h3 {
-        color: #0F172A !important;
+        color: #0A291E !important;
         font-weight: 700 !important;
     }
     
-    /* Sidebar Inputs & Selectbox Contrast Fix */
+    /* Sidebar Inputs & Selectbox */
     section[data-testid="stSidebar"] input {
         background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        border: 2.5px solid #0F172A !important;
+        color: #0A291E !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 8px !important;
         font-weight: 600 !important;
     }
     
-    /* COMPLETE STREAMLIT CLOUD & LOCAL SELECTBOX DROPDOWN ARROW FIX */
+    /* AgroDrone Selectbox & Dropdown Button */
     div[data-testid="stSelectbox"],
     div[data-baseweb="select"] {
         background-color: #FFFFFF !important;
@@ -209,25 +207,25 @@ st.markdown("""
     div[data-baseweb="select"] > div,
     div[data-baseweb="select"] div[role="combobox"] {
         background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        border: 2.5px solid #0F172A !important;
+        color: #0A291E !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 10px !important;
-        box-shadow: 2px 2px 0px #0F172A !important;
+        box-shadow: 0 2px 8px rgba(11, 79, 58, 0.08) !important;
         overflow: hidden !important;
     }
 
     div[data-testid="stSelectbox"] *,
     div[data-baseweb="select"] * {
-        color: #0F172A !important;
+        color: #0A291E !important;
     }
 
-    /* Target the right dropdown arrow button area */
+    /* Target the right dropdown arrow button area - Forest Emerald Button */
     div[data-testid="stSelectbox"] [data-baseweb="icon"],
     div[data-baseweb="select"] [data-baseweb="icon"],
     div[data-baseweb="select"] > div > div:last-child,
     div[data-baseweb="select"] div[aria-hidden="true"] {
-        background-color: #FFB703 !important;
-        border-left: 2.5px solid #0F172A !important;
+        background-color: #0B4F3A !important;
+        border-left: 2px solid #0B4F3A !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
         min-width: 36px !important;
@@ -237,18 +235,18 @@ st.markdown("""
     }
     div[data-testid="stSelectbox"] [data-baseweb="icon"] *,
     div[data-baseweb="select"] [data-baseweb="icon"] * {
-        background-color: #FFB703 !important;
-        color: #0F172A !important;
-        fill: #0F172A !important;
+        background-color: #0B4F3A !important;
+        color: #FFFFFF !important;
+        fill: #FFFFFF !important;
     }
 
-    /* Force the SVG Arrow Icon to be 100% visible dark navy */
+    /* Force the SVG Arrow Icon to be 100% visible crisp white on Forest Green */
     div[data-testid="stSelectbox"] svg,
     div[data-baseweb="select"] svg,
     svg[data-testid="stSelectboxIcon"] {
-        fill: #0F172A !important;
-        color: #0F172A !important;
-        stroke: #0F172A !important;
+        fill: #FFFFFF !important;
+        color: #FFFFFF !important;
+        stroke: #FFFFFF !important;
         width: 1.3rem !important;
         height: 1.3rem !important;
         opacity: 1 !important;
@@ -259,8 +257,8 @@ st.markdown("""
     div[data-testid="stSelectbox"] path,
     div[data-baseweb="select"] path,
     svg[data-testid="stSelectboxIcon"] path {
-        fill: #0F172A !important;
-        stroke: #0F172A !important;
+        fill: #FFFFFF !important;
+        stroke: #FFFFFF !important;
         opacity: 1 !important;
     }
 
@@ -268,115 +266,118 @@ st.markdown("""
     div[data-baseweb="popover"],
     div[data-baseweb="popover"] * {
         background-color: #FFFFFF !important;
-        color: #0F172A !important;
+        color: #0A291E !important;
     }
     div[data-baseweb="popover"] ul[data-baseweb="menu"],
     ul[role="listbox"] {
-        border: 2.5px solid #0F172A !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 10px !important;
-        box-shadow: 4px 4px 0px #0F172A !important;
+        box-shadow: 0 6px 20px rgba(11, 79, 58, 0.15) !important;
         background-color: #FFFFFF !important;
     }
     div[data-baseweb="popover"] li,
     ul[role="listbox"] li {
-        color: #0F172A !important;
+        color: #0A291E !important;
         font-weight: 600 !important;
     }
     div[data-baseweb="popover"] li:hover,
     ul[role="listbox"] li:hover {
-        background-color: #FFB703 !important;
-        color: #0F172A !important;
+        background-color: #EBF0E6 !important;
+        color: #0B4F3A !important;
     }
 
     /* Radio Button Fix */
     div[aria-label="Select Analysis Mode"] label p {
-        color: #0F172A !important;
+        color: #0A291E !important;
         font-weight: 700 !important;
         font-size: 0.95rem !important;
     }
 
     /* Alerts (Success / Info / Warning / Error) Contrast Fix */
     div[data-testid="stAlert"] {
-        border: 2.5px solid #0F172A !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 12px !important;
-        box-shadow: 4px 4px 0px #0F172A !important;
+        box-shadow: 0 4px 14px rgba(11, 79, 58, 0.08) !important;
+        background-color: #EBF0E6 !important;
     }
     div[data-testid="stAlert"] * {
-        color: #0F172A !important;
+        color: #0A291E !important;
         font-weight: 700 !important;
     }
     
-    /* Button Customization (Chunky Retro Button) */
+    /* Primary AgroDrone Button (Forest Emerald Pill) */
     .stButton > button {
-        background-color: #FFB703 !important;
-        color: #0F172A !important;
+        background-color: #0B4F3A !important;
+        color: #FFFFFF !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-weight: 800 !important;
         font-size: 1rem !important;
-        border: 2.5px solid #0F172A !important;
+        border: none !important;
         border-radius: 999px !important;
-        padding: 10px 24px !important;
-        box-shadow: 3px 3px 0px #0F172A !important;
+        padding: 12px 26px !important;
+        box-shadow: 0 4px 16px rgba(11, 79, 58, 0.25) !important;
         transition: all 0.15s ease !important;
         width: 100%;
     }
     .stButton > button:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 5px 5px 0px #0F172A !important;
-        background-color: #F9A220 !important;
+        box-shadow: 0 6px 22px rgba(11, 79, 58, 0.35) !important;
+        background-color: #063D2C !important;
+        color: #FFFFFF !important;
     }
     
     /* Download Button Customization */
     .stDownloadButton > button {
-        background-color: #FFFDF7 !important;
-        color: #0F172A !important;
+        background-color: #FFFFFF !important;
+        color: #0B4F3A !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-weight: 700 !important;
-        border: 2.5px solid #0F172A !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 999px !important;
-        box-shadow: 3px 3px 0px #0F172A !important;
+        box-shadow: 0 4px 14px rgba(11, 79, 58, 0.08) !important;
         width: 100%;
     }
     .stDownloadButton > button:hover {
-        background-color: #FFB703 !important;
+        background-color: #0B4F3A !important;
+        color: #FFFFFF !important;
         transform: translateY(-2px) !important;
-        box-shadow: 5px 5px 0px #0F172A !important;
+        box-shadow: 0 6px 20px rgba(11, 79, 58, 0.25) !important;
     }
 
     /* Native Streamlit Metric Cards Styling */
     div[data-testid="stMetric"] {
         background-color: #FFFFFF !important;
-        border: 2.5px solid #0F172A !important;
+        border: 1.5px solid #E1EADF !important;
         border-radius: 14px !important;
         padding: 14px 16px !important;
-        box-shadow: 4px 4px 0px #0F172A !important;
+        box-shadow: 0 4px 16px rgba(11, 79, 58, 0.06) !important;
     }
     div[data-testid="stMetric"] * {
-        color: #0F172A !important;
+        color: #0A291E !important;
     }
     div[data-testid="stMetricLabel"] p {
         font-weight: 700 !important;
         font-size: 0.85rem !important;
-        color: #475569 !important;
+        color: #4A6B5D !important;
     }
     div[data-testid="stMetricValue"] {
         font-weight: 800 !important;
         font-size: 1.8rem !important;
-        color: #0F172A !important;
+        color: #0B4F3A !important;
     }
 
     /* Expander Box Styling */
     div[data-testid="stExpander"] {
-        border: 2.5px solid #0F172A !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 14px !important;
-        background-color: #FFFDF7 !important;
-        box-shadow: 4px 4px 0px #0F172A !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 4px 16px rgba(11, 79, 58, 0.06) !important;
         overflow: hidden !important;
     }
     div[data-testid="stExpander"] summary {
         font-weight: 800 !important;
-        color: #0F172A !important;
-        background-color: #FFFDF7 !important;
+        color: #0B4F3A !important;
+        background-color: #EBF0E6 !important;
     }
 
     /* Sidebar File Uploader & Uploaded File Card Styling */
@@ -387,12 +388,12 @@ st.markdown("""
     div[data-testid="stFileUploaderFile"],
     section[data-testid="stFileUploaderFileData"] {
         background-color: #FFFFFF !important;
-        border-color: #0F172A !important;
-        color: #0F172A !important;
+        border-color: #0B4F3A !important;
+        color: #0A291E !important;
     }
 
     div[data-testid="stFileUploaderDropzone"] {
-        border: 2px dashed #0F172A !important;
+        border: 2px dashed #0B4F3A !important;
         border-radius: 12px !important;
         background-color: #FFFFFF !important;
         padding: 10px !important;
@@ -400,10 +401,10 @@ st.markdown("""
 
     div[data-testid="stFileUploaderFileData"],
     section[data-testid="stFileUploaderFileData"] {
-        background-color: #FFFDF7 !important;
-        border: 2px solid #0F172A !important;
+        background-color: #EBF0E6 !important;
+        border: 1.5px solid #0B4F3A !important;
         border-radius: 10px !important;
-        box-shadow: 2px 2px 0px #0F172A !important;
+        box-shadow: 0 2px 8px rgba(11, 79, 58, 0.08) !important;
         padding: 8px 12px !important;
     }
 
@@ -411,14 +412,14 @@ st.markdown("""
     div[data-testid="stFileUploaderFileData"] *,
     div[data-testid="stFileUploaderFileName"],
     div[data-testid="stFileUploaderDropzoneInstructions"] * {
-        color: #0F172A !important;
+        color: #0A291E !important;
         font-weight: 700 !important;
-        fill: #0F172A !important;
+        fill: #0A291E !important;
     }
 
     div[data-testid="stFileUploaderFileData"] small,
     div[data-testid="stFileUploaderFileData"] span {
-        color: #475569 !important;
+        color: #4A6B5D !important;
         font-weight: 600 !important;
     }
 
@@ -426,31 +427,31 @@ st.markdown("""
     button[aria-label="Remove file"],
     button[aria-label="Delete file"] {
         background-color: #FFFFFF !important;
-        border: 1.5px solid #0F172A !important;
+        border: 1.5px solid #0B4F3A !important;
         border-radius: 50% !important;
     }
     div[data-testid="stFileUploaderFileData"] button svg,
     div[data-testid="stFileUploaderFileData"] button path {
-        fill: #0F172A !important;
-        stroke: #0F172A !important;
-        color: #0F172A !important;
+        fill: #0B4F3A !important;
+        stroke: #0B4F3A !important;
+        color: #0B4F3A !important;
     }
 
     /* Table & Dataframe styling */
     .stDataFrame, div[data-testid="stTable"] {
-        border: 2.5px solid #0F172A !important;
+        border: 2px solid #0B4F3A !important;
         border-radius: 12px !important;
         overflow: hidden !important;
-        box-shadow: 4px 4px 0px #0F172A !important;
+        box-shadow: 0 4px 16px rgba(11, 79, 58, 0.08) !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Application Header (Aardvark Book Club Inspired Hero Banner)
+# Application Header (AgroDrone Inspired Hero Banner)
 st.markdown("""
 <div class="hero-container">
     <h1 class="hero-title">🌾 Crop Health and Disease Surveillance</h1>
-    <div class="hero-subtitle">Image Processing Based Crop Disease Segmentation & Severity Estimation</div>
+    <div class="hero-subtitle">Precision Drone Solutions for Smarter Agriculture & Severity Estimation</div>
     <div class="hero-handwritten">⚡ Aerial & Drone Surveillance Ready</div>
 </div>
 <div class="academic-banner">
