@@ -198,63 +198,94 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* Complete Selectbox & Dropdown Arrow Button Fix */
+    /* COMPLETE STREAMLIT CLOUD & LOCAL SELECTBOX DROPDOWN ARROW FIX */
+    div[data-testid="stSelectbox"],
     div[data-baseweb="select"] {
         background-color: #FFFFFF !important;
         border-radius: 10px !important;
     }
-    div[data-baseweb="select"],
-    div[data-baseweb="select"] *,
+    
+    div[data-testid="stSelectbox"] > div,
     div[data-baseweb="select"] > div,
     div[data-baseweb="select"] div[role="combobox"] {
         background-color: #FFFFFF !important;
         color: #0F172A !important;
-    }
-    div[data-baseweb="select"] > div {
         border: 2.5px solid #0F172A !important;
         border-radius: 10px !important;
-        background-color: #FFFFFF !important;
         box-shadow: 2px 2px 0px #0F172A !important;
         overflow: hidden !important;
     }
-    /* Style the right dropdown arrow section as a distinct warm yellow button */
-    div[data-baseweb="select"] > div > div:last-child,
-    div[data-baseweb="select"] > div > div:last-child * {
-        background-color: #FFB703 !important;
+
+    div[data-testid="stSelectbox"] *,
+    div[data-baseweb="select"] * {
         color: #0F172A !important;
     }
-    div[data-baseweb="select"] > div > div:last-child {
+
+    /* Target the right dropdown arrow button area */
+    div[data-testid="stSelectbox"] [data-baseweb="icon"],
+    div[data-baseweb="select"] [data-baseweb="icon"],
+    div[data-baseweb="select"] > div > div:last-child,
+    div[data-baseweb="select"] div[aria-hidden="true"] {
+        background-color: #FFB703 !important;
         border-left: 2.5px solid #0F172A !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
+        min-width: 36px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
     }
-    /* SVG Arrow Icon Styling */
-    div[data-baseweb="select"] svg {
+    div[data-testid="stSelectbox"] [data-baseweb="icon"] *,
+    div[data-baseweb="select"] [data-baseweb="icon"] * {
+        background-color: #FFB703 !important;
+        color: #0F172A !important;
+        fill: #0F172A !important;
+    }
+
+    /* Force the SVG Arrow Icon to be 100% visible dark navy */
+    div[data-testid="stSelectbox"] svg,
+    div[data-baseweb="select"] svg,
+    svg[data-testid="stSelectboxIcon"] {
         fill: #0F172A !important;
         color: #0F172A !important;
-        width: 1.2rem !important;
-        height: 1.2rem !important;
+        stroke: #0F172A !important;
+        width: 1.3rem !important;
+        height: 1.3rem !important;
         opacity: 1 !important;
         visibility: visible !important;
+        display: block !important;
     }
-    div[data-baseweb="select"] path {
+
+    div[data-testid="stSelectbox"] path,
+    div[data-baseweb="select"] path,
+    svg[data-testid="stSelectboxIcon"] path {
         fill: #0F172A !important;
         stroke: #0F172A !important;
+        opacity: 1 !important;
     }
-    div[data-baseweb="popover"], div[data-baseweb="popover"] * {
+
+    /* Dropdown Popover Menu (when expanded) */
+    div[data-baseweb="popover"],
+    div[data-baseweb="popover"] * {
         background-color: #FFFFFF !important;
         color: #0F172A !important;
     }
-    ul[data-baseweb="menu"] {
+    div[data-baseweb="popover"] ul[data-baseweb="menu"],
+    ul[role="listbox"] {
         border: 2.5px solid #0F172A !important;
         border-radius: 10px !important;
         box-shadow: 4px 4px 0px #0F172A !important;
+        background-color: #FFFFFF !important;
     }
-    li[role="option"]:hover {
+    div[data-baseweb="popover"] li,
+    ul[role="listbox"] li {
+        color: #0F172A !important;
+        font-weight: 600 !important;
+    }
+    div[data-baseweb="popover"] li:hover,
+    ul[role="listbox"] li:hover {
         background-color: #FFB703 !important;
+        color: #0F172A !important;
     }
 
     /* Radio Button Fix */
