@@ -379,16 +379,61 @@ st.markdown("""
         background-color: #FFFDF7 !important;
     }
 
-    /* Sidebar File Uploader Styling */
-    section[data-testid="stSidebar"] div[data-testid="stFileUploader"] {
+    /* Sidebar File Uploader & Uploaded File Card Styling */
+    div[data-testid="stFileUploader"],
+    div[data-testid="stFileUploader"] section,
+    div[data-testid="stFileUploaderDropzone"],
+    div[data-testid="stFileUploaderFileData"],
+    div[data-testid="stFileUploaderFile"],
+    section[data-testid="stFileUploaderFileData"] {
+        background-color: #FFFFFF !important;
+        border-color: #0F172A !important;
+        color: #0F172A !important;
+    }
+
+    div[data-testid="stFileUploaderDropzone"] {
         border: 2px dashed #0F172A !important;
         border-radius: 12px !important;
         background-color: #FFFFFF !important;
-        padding: 8px !important;
+        padding: 10px !important;
     }
-    section[data-testid="stSidebar"] div[data-testid="stFileUploader"] * {
+
+    div[data-testid="stFileUploaderFileData"],
+    section[data-testid="stFileUploaderFileData"] {
+        background-color: #FFFDF7 !important;
+        border: 2px solid #0F172A !important;
+        border-radius: 10px !important;
+        box-shadow: 2px 2px 0px #0F172A !important;
+        padding: 8px 12px !important;
+    }
+
+    div[data-testid="stFileUploader"] *,
+    div[data-testid="stFileUploaderFileData"] *,
+    div[data-testid="stFileUploaderFileName"],
+    div[data-testid="stFileUploaderDropzoneInstructions"] * {
         color: #0F172A !important;
+        font-weight: 700 !important;
+        fill: #0F172A !important;
+    }
+
+    div[data-testid="stFileUploaderFileData"] small,
+    div[data-testid="stFileUploaderFileData"] span {
+        color: #475569 !important;
         font-weight: 600 !important;
+    }
+
+    div[data-testid="stFileUploaderFileData"] button,
+    button[aria-label="Remove file"],
+    button[aria-label="Delete file"] {
+        background-color: #FFFFFF !important;
+        border: 1.5px solid #0F172A !important;
+        border-radius: 50% !important;
+    }
+    div[data-testid="stFileUploaderFileData"] button svg,
+    div[data-testid="stFileUploaderFileData"] button path {
+        fill: #0F172A !important;
+        stroke: #0F172A !important;
+        color: #0F172A !important;
     }
 
     /* Table & Dataframe styling */
