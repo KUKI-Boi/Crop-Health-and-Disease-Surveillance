@@ -198,24 +198,47 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* Complete Selectbox & Dropdown Arrow Styling Fix */
+    /* Complete Selectbox & Dropdown Arrow Button Fix */
     div[data-baseweb="select"] {
         background-color: #FFFFFF !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
+    }
+    div[data-baseweb="select"],
+    div[data-baseweb="select"] *,
+    div[data-baseweb="select"] > div,
+    div[data-baseweb="select"] div[role="combobox"] {
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
     }
     div[data-baseweb="select"] > div {
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
         border: 2.5px solid #0F172A !important;
-        border-radius: 8px !important;
-    }
-    div[data-baseweb="select"] * {
+        border-radius: 10px !important;
         background-color: #FFFFFF !important;
+        box-shadow: 2px 2px 0px #0F172A !important;
+        overflow: hidden !important;
+    }
+    /* Style the right dropdown arrow section as a distinct warm yellow button */
+    div[data-baseweb="select"] > div > div:last-child,
+    div[data-baseweb="select"] > div > div:last-child * {
+        background-color: #FFB703 !important;
         color: #0F172A !important;
     }
+    div[data-baseweb="select"] > div > div:last-child {
+        border-left: 2.5px solid #0F172A !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    /* SVG Arrow Icon Styling */
     div[data-baseweb="select"] svg {
         fill: #0F172A !important;
         color: #0F172A !important;
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     div[data-baseweb="select"] path {
         fill: #0F172A !important;
@@ -227,7 +250,7 @@ st.markdown("""
     }
     ul[data-baseweb="menu"] {
         border: 2.5px solid #0F172A !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         box-shadow: 4px 4px 0px #0F172A !important;
     }
     li[role="option"]:hover {
