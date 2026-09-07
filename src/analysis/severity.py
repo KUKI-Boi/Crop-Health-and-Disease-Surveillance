@@ -37,19 +37,19 @@ def classify_severity(
 
     if pct <= 10.0:
         severity_level = "Low"
-        color_code = "#2E7D32" # Green / Low
+        color_code = "#2E8B57" # Green / Low (AgriVision Healthy Green)
         recommendation = "Low infection level detected. Routine monitoring recommended."
     elif pct <= 30.0:
         severity_level = "Moderate"
-        color_code = "#FBC02D" # Amber / Moderate
+        color_code = "#D99A32" # Amber / Moderate (AgriVision Warning Amber)
         recommendation = "Moderate infection level detected. Localized treatment recommended."
     elif pct <= 50.0:
         severity_level = "High"
-        color_code = "#F57C00" # Orange / High
+        color_code = "#D96B32" # Orange-Rust / High (AgriVision Orange-Rust)
         recommendation = "High infection level detected. Targeted intervention required."
     else:
         severity_level = "Severe"
-        color_code = "#D32F2F" # Red / Severe
+        color_code = "#D94B45" # Rust Red / Severe (AgriVision Rust Red)
         recommendation = "Severe infection level detected. Immediate agricultural intervention required."
 
     return {

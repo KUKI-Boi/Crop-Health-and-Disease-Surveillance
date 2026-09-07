@@ -11,17 +11,17 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-# Color Conventions (RGB format)
-HEALTHY_GREEN = (34, 197, 94)      # Vibrant Green #22C55E
-DISEASE_RED = (239, 68, 68)       # Bright Red #EF4444
-BACKGROUND_DARK = (20, 20, 20)    # Dark Charcoal #141414
+# AgriVision Palette Color Conventions (RGB format)
+HEALTHY_GREEN = (46, 139, 87)       # Healthy Green #2E8B57
+DISEASE_RED = (217, 75, 69)        # Rust Red #D94B45
+BACKGROUND_DARK = (23, 35, 29)     # Dark Charcoal #17231D
 
-# Severity Badges & Colors
+# Severity Badges & Colors (AgriVision Palette)
 SEVERITY_COLORS = {
-    "LOW": "#22C55E",        # Green
-    "MODERATE": "#EAB308",   # Yellow / Gold
-    "HIGH": "#F97316",       # Orange
-    "SEVERE": "#EF4444"      # Red
+    "LOW": "#2E8B57",        # Healthy Green
+    "MODERATE": "#D99A32",   # Warning Amber
+    "HIGH": "#D96B32",       # Orange-Rust
+    "SEVERE": "#D94B45"      # Rust Red
 }
 
 def create_colorized_health_map(
@@ -124,7 +124,7 @@ def create_summary_chart(
 
     labels = [f"Healthy ({healthy_pct:.1f}%)", f"Diseased ({disease_pct:.1f}%)"]
     sizes = [max(0.01, healthy_pct), max(0.01, disease_pct)]
-    colors = ["#22C55E", "#EF4444"]
+    colors = ["#2E8B57", "#D94B45"]
 
     # Draw Donut Chart
     wedges, texts, autotexts = ax.pie(
@@ -136,7 +136,7 @@ def create_summary_chart(
         startangle=140,
         colors=colors,
         wedgeprops=dict(width=0.38, edgecolor="#FFFFFF", linewidth=2.5),
-        textprops=dict(fontsize=10, fontweight="bold", color="#0F172A")
+        textprops=dict(fontsize=10, fontweight="bold", color="#17231D")
     )
 
     # Style inside percentage texts
@@ -151,10 +151,10 @@ def create_summary_chart(
         f"{disease_pct:.1f}%\nDISEASED", 
         ha="center", va="center", 
         fontsize=13, fontweight="bold", 
-        color="#EF4444" if disease_pct > 10 else "#0F172A"
+        color="#D94B45" if disease_pct > 10 else "#17231D"
     )
 
-    ax.set_title("Vegetation Health Distribution", fontsize=12, fontweight="bold", color="#0F172A", pad=12)
+    ax.set_title("Vegetation Health Distribution", fontsize=12, fontweight="bold", color="#17231D", pad=12)
     plt.tight_layout()
     return fig
 
