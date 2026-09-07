@@ -379,55 +379,61 @@ st.markdown("""
         background-color: #FFFDF7 !important;
     }
 
-    /* Sidebar File Uploader Dropzone Styling */
+    /* Sidebar File Uploader & Uploaded File Card Styling */
+    div[data-testid="stFileUploader"],
+    div[data-testid="stFileUploader"] section,
+    div[data-testid="stFileUploaderDropzone"],
+    div[data-testid="stFileUploaderFileData"],
+    div[data-testid="stFileUploaderFile"],
+    section[data-testid="stFileUploaderFileData"] {
+        background-color: #FFFFFF !important;
+        border-color: #0F172A !important;
+        color: #0F172A !important;
+    }
+
     div[data-testid="stFileUploaderDropzone"] {
-        border: 2.5px dashed #0F172A !important;
+        border: 2px dashed #0F172A !important;
         border-radius: 12px !important;
         background-color: #FFFFFF !important;
         padding: 10px !important;
     }
-    div[data-testid="stFileUploaderDropzoneInstructions"] * {
-        color: #0F172A !important;
-        font-weight: 700 !important;
-    }
 
-    /* Uploaded File Card Container Styling */
     div[data-testid="stFileUploaderFileData"],
     section[data-testid="stFileUploaderFileData"] {
-        background-color: #0F172A !important;
-        border: 2.5px solid #0F172A !important;
+        background-color: #FFFDF7 !important;
+        border: 2px solid #0F172A !important;
         border-radius: 10px !important;
         box-shadow: 2px 2px 0px #0F172A !important;
         padding: 8px 12px !important;
     }
 
-    /* Uploaded File Name & Text Color (#FFFDF7) */
+    div[data-testid="stFileUploader"] *,
+    div[data-testid="stFileUploaderFileData"] *,
     div[data-testid="stFileUploaderFileName"],
-    div[data-testid="stFileUploaderFileName"] *,
-    div[data-testid="stFileUploaderFileData"] span,
-    div[data-testid="stFileUploaderFileData"] p,
-    div[data-testid="stFileUploaderFileData"] small {
-        color: #FFFDF7 !important;
+    div[data-testid="stFileUploaderDropzoneInstructions"] * {
+        color: #0F172A !important;
         font-weight: 700 !important;
+        fill: #0F172A !important;
     }
 
-    /* Remove Button Icon Color (#FFFDF7) */
+    div[data-testid="stFileUploaderFileData"] small,
+    div[data-testid="stFileUploaderFileData"] span {
+        color: #475569 !important;
+        font-weight: 600 !important;
+    }
+
     div[data-testid="stFileUploaderFileData"] button,
     button[aria-label="Remove file"],
-    button[aria-label="Delete file"],
-    div[data-testid="stFileUploaderFileData"] [data-testid="stBaseButton-secondary"] {
-        background-color: transparent !important;
-        border: none !important;
-        color: #FFFDF7 !important;
+    button[aria-label="Delete file"] {
+        background-color: #FFFFFF !important;
+        border: 1.5px solid #0F172A !important;
+        border-radius: 50% !important;
     }
     div[data-testid="stFileUploaderFileData"] button svg,
-    div[data-testid="stFileUploaderFileData"] button path,
-    button[aria-label="Remove file"] svg,
-    button[aria-label="Remove file"] path {
-        fill: #FFFDF7 !important;
-        stroke: #FFFDF7 !important;
-        color: #FFFDF7 !important;
-        opacity: 1 !important;
+    div[data-testid="stFileUploaderFileData"] button path {
+        fill: #0F172A !important;
+        stroke: #0F172A !important;
+        color: #0F172A !important;
     }
 
     /* Table & Dataframe styling */
